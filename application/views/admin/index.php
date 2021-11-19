@@ -3,6 +3,7 @@
     <!-- row ux-->
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
+            
             <div class="card border-left-danger shadow h-100 py-2 bg-primary">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -22,14 +23,12 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-md font-weight-bold text-white text-uppercase mb-1">Stok Buku Terdaftar</div>
+                            <div class="text-md font-weight-bold text-white text-uppercase mb-1">Stok Buku Terdaftar
+                            </div>
                             <div class="h1 mb-0 font-weight-bold text-white">
-                                <?php
+                                <?php 
                                 $where = ['stok != 0'];
-                                $totalstok = $this->ModelBuku->total(
-                                    'stok',
-                                    $where
-                                );
+                                $totalstok = $this->ModelBuku->total('stok',$where);
                                 echo $totalstok;
                                 ?>
                             </div>
@@ -38,6 +37,7 @@
                             <a href="<?= base_url('buku'); ?>"><i class="fas fa-book fa-3x text-primary"></i></a>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -49,9 +49,9 @@
                             <div class="text-md font-weight-bold text-white text-uppercase mb-1">Buku yang dipinjam</div>
                             <div class="h1 mb-0 font-weight-bold text-white">
                                 <?php
-                                $where = ['dipinjam != 0'];
-                                $totaldipinjam = $this->ModelBuku->total('dipinjam', $where);
-                                echo $totaldipinjam;
+                                    $where = ['dipinjam != 0'];
+                                    $totaldipinjam = $this->ModelBuku->total('dipinjam',$where);
+                                    echo $totaldipinjam;
                                 ?>
                             </div>
                         </div>
@@ -67,12 +67,13 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-md font-weight-bold text-white text-uppercase mb-1">Buku yang dibooking</div>
+                            <div class="text-md font-weight-bold text-white text-uppercase mb-1">Buku yang dibooking
+                            </div>
                             <div class="h1 mb-0 font-weight-bold text-white">
                                 <?php
-                                $where = ['dibooking !=0'];
-                                $totaldibooking = $this->ModelBuku->total('dibooking', $where);
-                                echo $totaldibooking;
+                                    $where = ['dibooking !=0'];
+                                    $totaldibooking = $this->ModelBuku->total('dibooking', $where);
+                                    echo $totaldibooking;
                                 ?>
                             </div>
                         </div>
@@ -106,23 +107,24 @@
                         <th>Member Sejak</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     <?php
                     $i = 1;
                     foreach ($anggota as $a) { ?>
-                        <tr>
-                            <td><?= $i++; ?></td>
-                            <td><?= $a['nama']; ?></td>
-                            <td><?= $a['email']; ?></td>
-                            <td><?= $a['role_id']; ?></td>
-                            <td><?= $a['is_active']; ?></td>
-                            <td><?= date('Y', $a['tanggal_input']); ?></td>
-                        </tr>
+                    <tr>
+                        <td><?= $i++; ?></td>
+                        <td><?= $a['nama']; ?></td>
+                        <td><?= $a['email']; ?></td>
+                        <td><?= $a['role_id']; ?></td>
+                        <td><?= $a['is_active']; ?></td>
+                        <td><?= date('Y', $a['tanggal_input']); ?></td>
+                    </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
-        <div class="table-responsive table-bordered col-sm-5 ml-auto mr-auto mt-2">
+        <div class="table-responsive table-bordered col-sm-5 ml-auto mrauto mt-2">
             <div class="page-header">
                 <span class="fas fa-book text-warning mt-2"> Data
                     Buku</span>
@@ -142,19 +144,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $i = 1;
-                        foreach ($buku as $b) { ?>
-                            <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $b['judul_buku']; ?></td>
-                                <td><?= $b['pengarang']; ?></td>
-                                <td><?= $b['penerbit']; ?></td>
-                                <td><?= $b['tahun_terbit']; ?></td>
-                                <td><?= $b['isbn']; ?></td>
-                                <td><?= $b['stok']; ?></td>
-                            </tr>
-                        <?php } ?>
+                        <?php 
+                            $i = 1;
+                            foreach ($buku as $b) :
+                        ?>
+                        <tr>
+                            <td><?= $i++; ?></td>
+                            <td><?= $b['judul_buku']; ?></td>
+                            <td><?= $b['pengarang']; ?></td>
+                            <td><?= $b['penerbit']; ?></td>
+                            <td><?= $b['tahun_terbit']; ?></td>
+                            <td><?= $b['isbn']; ?></td>
+                            <td><?= $b['stok']; ?></td>
+                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
